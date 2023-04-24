@@ -44,11 +44,11 @@ function UrlHandler(url) {
           className="h-[40px] w-[80px] items-center justify-center rounded-r-xl bg-lime-500"
           onClick={() => handleUrl(urlInput)}
         >
-          <p className="text-center">Shorten Url</p>
+          <p className="text-center font-bold">Short</p>
         </button>
       </div>
       {errorHandleUrl && (
-        <p className="text-red-400 text-center mt-4">error getting the shortened url</p>
+        <p className="text-red-400 text-center mt-4 font-bold">error getting the shortened url</p>
       )}
     </div>
   );
