@@ -1,22 +1,15 @@
 import React from "react";
-import { Link as LinkDom } from "next/link";
-import { Link } from "react-scroll";
+import { Link } from "next/link";
+import { Link as LinkScroll } from "react-scroll";
 
 function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const [flyer, setFlyer] = React.useState(false);
-  const [flyerTwo, setFlyerTwo] = React.useState(false);
 
   return (
-    <header class="fixed top-0 w-full clearNav z-50">
-      <div class="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
+    <header className="fixed top-0 w-full clearNav z-50">
+      <div className="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <div className="flex flex-row items-center justify-between p-3 md:p-1">
-          <LinkDom
-            to="/"
-            class="flex text-3xl font-medium mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
-          >
-            Url Shortener
-          </LinkDom>
+          <h1 className="flex text-3xl font-medium mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Url Shortener</h1>
           <button
             className="text-white pb-4 cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none content-end ml-auto"
             type="button"
@@ -47,22 +40,17 @@ function Header() {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <div class="md:ml-auto md:mr-auto font-4 pt-1 md:pl-14 pl-1 flex flex-wrap items-center md:text-base text-1xl md:justify-center justify-items-start">
-            <Link to="A" smooth={true} duration={1000}>
-              <a class="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
+          <div className="md:ml-auto md:mr-auto font-4 pt-1 md:pl-14 pl-1 flex flex-wrap items-center md:text-base text-1xl md:justify-center justify-items-start">
+            <LinkScroll to="A" smooth={true} duration={1000}>
+              <a className="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
                 Services
               </a>
-            </Link>
-            <Link to="B" smooth={true} duration={1000}>
-              <a class="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
+            </LinkScroll>
+            <LinkScroll to="B" smooth={true} duration={1000}>
+              <a className="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
                 FAQ
               </a>
-            </Link>
-            <LinkDom to={"/checkorder"}>
-              <a class="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
-                Check order
-              </a>
-            </LinkDom>
+            </LinkScroll>
           </div>
           <a
             href="https://instagram.com/onlygrowthfans"
@@ -75,7 +63,7 @@ function Header() {
               width="30"
               height="20"
               fill="currentColor"
-              class="bi bi-instagram"
+              className="bi bi-instagram"
               viewBox="0 0 25 16"
             >
               <path
