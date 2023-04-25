@@ -1,4 +1,4 @@
-export class UrlValidator {
+class UrlValidator {
   urlParser = (url) => {
     let formattedURL = url;
 
@@ -12,3 +12,5 @@ export class UrlValidator {
     return formattedURL;
   };
 }
+
+module.exports = UrlValidator
