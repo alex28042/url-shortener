@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const routerUrls = require("./routes/urlRoutes");
-
+const routerAuth = require("./routes/authRoutes");
 const PORT = process.env.PORT || 3000;
 
 
@@ -19,4 +19,6 @@ app.listen(PORT, () => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/v1", routerUrls);
+app.use("/api/v1/urls", routerUrls);
+app.use("/api/v1/auth", routerAuth);
+
