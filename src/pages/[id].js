@@ -13,18 +13,19 @@ function UrlGetter() {
     }
 
     const fetchUrl = async () => {
-       try {
-      const response = await fetch(`http://localhost:3000/api/v1/${id}`)
+      try {
+        const response = await fetch(`http://localhost:3000/api/v1/${id}`);
 
-      const resJson = response.json()
+        const resJson = response.json();
 
-      router.push("")
-    } catch (error) {
-      console.log(error);
-    }
-    }
-   
+        router.replace(resJson.data.url);
+      } catch (error) {
+        router.push("/")
+        console.log(error);
+      }
+    };
 
+    fetchUrl()
   }, []);
 
   return <Layout></Layout>;
