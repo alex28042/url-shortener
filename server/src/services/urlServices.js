@@ -1,4 +1,5 @@
 const Url = require("../database/urlDatabase");
+const { UrlValidator } = require("../shared/urlValidator");
 const getOneUrl = async (url) => {
   try {
     const oneUrl = await Url.getOneUrl(url);
@@ -9,8 +10,10 @@ const getOneUrl = async (url) => {
 };
 
 const insertUrl = async (url) => {
+  const urlParser = new UrlValidator()
+
   const urlToInsert = {
-    url: url,
+    url: urlParser.urlParser(url),
     createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
   };
 

@@ -1,4 +1,5 @@
 const client = require("../mongodb");
+const { UrlValidator } = require("../shared/urlValidator");
 
 const getOneUrl = async (url) => {
   try {
@@ -20,9 +21,10 @@ const getOneUrl = async (url) => {
 const insertUrl = async (url) => {
   const alpheBeth =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+  
   try {
     let urlShorted = "";
+    
 
     const urlDatabase = await client
       .db("Url")

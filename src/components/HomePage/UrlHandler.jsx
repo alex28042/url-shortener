@@ -24,12 +24,12 @@ function UrlHandler(url) {
         body: JSON.stringify({ url }),
       });
 
-      console.log(response.json());
 
       const data = await response.json();
 
       console.log(data);
-      setUrlShortened(data.data.url);
+
+      setUrlShortened(data.data.urlShorted);
     } catch (error) {
       setErrorHandleUrl(true);
       console.log(error);
@@ -60,7 +60,7 @@ function UrlHandler(url) {
       )}
       {urlShortened !== null && (
         <Link href={`/${urlShortened}`} className="text-green-400">
-          {urlShortened}
+          {"localhost:3000/" + urlShortened}
         </Link>
       )}
     </div>

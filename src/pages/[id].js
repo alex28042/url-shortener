@@ -7,28 +7,32 @@ function UrlGetter() {
   const { id } = router.query;
 
   useEffect(() => {
-    if (id.length !== 5) {
+
+    if (!id) return;
+
+    if (id?.length !== 5) {
       router.push("/");
       return;
     }
 
+
     const fetchUrl = async () => {
       try {
         const response = await fetch(`http://localhost:3000/api/v1/${id}`);
-
-        const resJson = response.json();
+        
+        const resJson = await response.json();
 
         router.replace(resJson.data.url);
       } catch (error) {
-        router.push("/")
+        router.push("/");
         console.log(error);
       }
     };
 
-    fetchUrl()
-  }, []);
+    fetchUrl();
+  }, [id]);
 
-  return <Layout></Layout>;
+  return <div></div>;
 }
 
 export default UrlGetter;
