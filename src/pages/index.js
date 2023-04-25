@@ -8,13 +8,6 @@ import { useRouter } from 'next/router'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const router = useRouter()
-  const { id } = router.query
-
-  useEffect(() => {
-    console.log(id);
-  }, [])
-
   return (
     <Layout>
       <main className='flex flex-col w-full items-center'>
