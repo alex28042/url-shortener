@@ -1,4 +1,5 @@
 const AuthService = require("../services/authServices");
+const jwt = require("../shared/jwt");
 
 const login = async (req, res) => {
   const user = {
@@ -20,6 +21,7 @@ const login = async (req, res) => {
       status: "OK",
       data: {
         ...loginUser,
+        accessToken: jwt.sign(loginUser, process.env.ACCESS_TOKEN_SECRET),
       },
     });
   } catch (error) {
@@ -47,6 +49,7 @@ const register = async (req, res) => {
       status: "OK",
       data: {
         ...registerUser,
+        accessToken: jwt.sign(registerUser, process.env.ACCESS_TOKEN_SECRET),
       },
     });
   } catch (error) {
