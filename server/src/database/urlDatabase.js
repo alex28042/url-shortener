@@ -1,5 +1,4 @@
 const client = require("../mongodb");
-const { UrlValidator } = require("../shared/urlValidator");
 
 const getOneUrl = async (url) => {
   try {
