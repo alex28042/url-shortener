@@ -13,7 +13,6 @@ function UrlHandler(url) {
   }, [errorHandleUrl]);
 
   const handleUrl = async (url) => {
-
     try {
       console.log(url);
       const response = await fetch("http://localhost:3000/api/v1/", {
@@ -23,7 +22,6 @@ function UrlHandler(url) {
         },
         body: JSON.stringify({ url }),
       });
-
 
       const data = await response.json();
 
@@ -38,7 +36,7 @@ function UrlHandler(url) {
 
   return (
     <div className="flex flex-col w-3/4 md:w-2/4 h-[200px] shadow-xl border rounded-xl">
-      <h1 className="font-bold text-center text-xl">
+      <h1 className="font-bold text-center text-xl mt-10">
         Paste the URL to be shortened
       </h1>
       <div className="flex flex-row mt-4 w-full items-center justify-center">
@@ -47,7 +45,7 @@ function UrlHandler(url) {
           onChange={(text) => setUrlInput(text.target.value)}
         />
         <button
-          className="h-[40px] w-[80px] items-center justify-center rounded-r-xl bg-lime-500"
+          className="h-[40px] w-[80px] items-center justify-center rounded-r-xl bg-green-400"
           onClick={() => handleUrl(urlInput)}
         >
           <p className="text-center font-bold">Short</p>
@@ -59,7 +57,7 @@ function UrlHandler(url) {
         </p>
       )}
       {urlShortened !== null && (
-        <Link href={`/${urlShortened}`} className="text-green-400">
+        <Link href={`/${urlShortened}`} className="text-green-300 mt-4 text-center">
           {"localhost:3000/" + urlShortened}
         </Link>
       )}
