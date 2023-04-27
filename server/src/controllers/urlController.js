@@ -1,7 +1,7 @@
 const urlService = require("../services/urlServices");
 
 const getOneUrl = async (req, res) => {
-  const url = req.params.url;
+  const url = { ...req.params.url, ...req.user };
 
   try {
     const oneUrl = await urlService.getOneUrl(url);
@@ -12,7 +12,7 @@ const getOneUrl = async (req, res) => {
 };
 
 const createUrl = async (req, res) => {
-  const url =  { ...req.body.url, ...req.user }; 
+  const url = { ...req.body.url, ...req.user };
   const regex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/;
 
   try {

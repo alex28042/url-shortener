@@ -5,11 +5,9 @@ const getOneUrl = async (url) => {
     const urlDatabase = await client
       .db("Url")
       .collection("urls")
-      .findOne({ urlShortened: url });
+      .findOne({ urlShortened: url.url, userId: url.id });
 
-    if (!urlDatabase) {
-      throw { status: 400, message: "Cant find Url" };
-    }
+    if (!urlDatabase) throw { status: 400, message: "Cant find Url" };
 
     return urlDatabase;
   } catch (error) {
@@ -20,19 +18,16 @@ const getOneUrl = async (url) => {
 const insertUrl = async (url) => {
   const alpheBeth =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  
+
   try {
     let urlShorted = "";
-    
 
     const urlDatabase = await client
       .db("Url")
       .collection("urls")
       .findOne({ url: url.url, userId: url.user });
 
-    if (urlDatabase) {
-      throw { status: 400, message: "Already added" };
-    }
+    if (urlDatabase) throw { status: 400, message: "Already added" };
 
     for (let i = 0; i < 5; i++) {
       const randomIndex = Math.floor(Math.random() * alpheBeth.length);
