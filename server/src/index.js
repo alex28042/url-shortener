@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
 const routerUrls = require("./routes/urlRoutes");
+const routerUsers = require("./routes/userRoutes");
 const routerAuth = require("./routes/authRoutes");
 const PORT = process.env.PORT || 3000;
 
@@ -25,11 +26,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/urls", routerUrls);
 app.use("/api/v1/auth", routerAuth);
-app.get("/", (req, res) => {
-  res.cookie("mycuki", "ggggg")
-  res.send("hgoala")
-})
-
-app.get("/a", (req, res) => {
-  res.send("hgoala")
-})
+app.use("/api/v1/users", routerUsers);

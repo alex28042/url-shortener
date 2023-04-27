@@ -1,10 +1,10 @@
-const UserService = require("../services/userRoutes");
+const UserService = require("../services/userServices");
 
 const getUserById = async (req, res) => {
-  const user = req.user;
+  const user = req.user.insertedId;
 
   try {
-    if (!user || !user.id) {
+    if (!user) {
       res.status(400).send({
         status: "FAILED",
         data: { error: "Error User" },

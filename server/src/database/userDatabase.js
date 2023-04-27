@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const client = require("../mongodb");
 
 const getUserById = async (user) => {
@@ -5,7 +6,7 @@ const getUserById = async (user) => {
     const getUser = await client
       .db("Url")
       .collection("users")
-      .findOne({ email: user.id });
+      .findOne({ _id: new ObjectId(user) });
 
     if (!getUser) {
       throw { status: 400, message: "Cant find User" };
@@ -15,4 +16,8 @@ const getUserById = async (user) => {
   } catch (error) {
     throw { status: error?.status, message: error };
   }
+};
+
+module.exports = {
+  getUserById,
 };
