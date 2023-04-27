@@ -2,10 +2,11 @@ const client = require("../mongodb");
 
 const getOneUrl = async (url) => {
   try {
+    console.log(url);
     const urlDatabase = await client
       .db("Url")
       .collection("urls")
-      .findOne({ urlShortened: url.url, userId: url.id });
+      .findOne({ urlShortened: url.url, userId: url.insertedId });
 
     if (!urlDatabase) throw { status: 400, message: "Cant find Url" };
 
@@ -15,6 +16,25 @@ const getOneUrl = async (url) => {
   }
 };
 
+const getAllUrls = async (user) => {
+  try {
+    console.log(user);
+    const urlsDatabase = await client
+      .db("Url")
+      .collection("urls")
+      .find({ userId: user.insertedId })
+      .toArray();
+    console.log(urlsDatabase);
+
+    if (!urlsDatabase) throw { status: 400, message: "Cant find Urls" };
+
+    return urlsDatabase;
+  } catch (error) {
+    throw { status: error?.status, message: error };
+  }
+};
+
+
 const insertUrl = async (url) => {
   const alpheBeth =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -22,10 +42,11 @@ const insertUrl = async (url) => {
   try {
     let urlShorted = "";
 
+    console.log(url);
     const urlDatabase = await client
       .db("Url")
       .collection("urls")
-      .findOne({ url: url.url, userId: url.user });
+      .findOne({ url: url.url, userId: url.userId });
 
     if (urlDatabase) throw { status: 400, message: "Already added" };
 
@@ -49,6 +70,7 @@ const insertUrl = async (url) => {
 };
 
 module.exports = {
+  getAllUrls,
   getOneUrl,
   insertUrl,
 };

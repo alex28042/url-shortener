@@ -1,5 +1,6 @@
 const Url = require("../database/urlDatabase");
-const { UrlValidator } = require("../shared/urlValidator");
+const urlParser  = require("../shared/urlValidator");
+
 const getOneUrl = async (url) => {
   try {
     const oneUrl = await Url.getOneUrl(url);
@@ -10,12 +11,10 @@ const getOneUrl = async (url) => {
 };
 
 const insertUrl = async (url) => {
-  const urlParser = new UrlValidator()
-
   const urlToInsert = {
-    url: urlParser.urlParser(url.url),
+    url: urlParser(url.url),
     createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
-    userId: user.id
+    userId: url.insertedId
   };
 
   try {
@@ -26,7 +25,19 @@ const insertUrl = async (url) => {
   }
 };
 
+const getAllUrls = async (user) => {
+  console.log(user);
+  try {
+    const allUrls = await Url.getAllUrls(user);
+    return allUrls;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 module.exports = {
+  getAllUrls,
   getOneUrl,
   insertUrl,
 };
