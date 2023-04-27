@@ -28,7 +28,7 @@ const insertUrl = async (url) => {
     const urlDatabase = await client
       .db("Url")
       .collection("urls")
-      .findOne({ url: url.url });
+      .findOne({ url: url.url, userId: url.user });
 
     if (urlDatabase) {
       throw { status: 400, message: "Already added" };

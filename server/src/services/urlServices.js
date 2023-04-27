@@ -13,8 +13,9 @@ const insertUrl = async (url) => {
   const urlParser = new UrlValidator()
 
   const urlToInsert = {
-    url: urlParser.urlParser(url),
+    url: urlParser.urlParser(url.url),
     createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+    userId: user.id
   };
 
   try {

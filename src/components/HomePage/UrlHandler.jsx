@@ -57,7 +57,10 @@ function UrlHandler(url) {
         </p>
       )}
       {urlShortened !== null && (
-        <Link href={`/${urlShortened}`} className="text-green-300 mt-4 text-center">
+        <Link
+          href={`/${urlShortened}`}
+          className="text-green-300 mt-4 text-center"
+        >
           {"localhost:3000/" + urlShortened}
         </Link>
       )}
