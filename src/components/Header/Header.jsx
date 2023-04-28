@@ -9,7 +9,7 @@ function Header() {
     <header className="fixed top-0 w-full clearNav z-50">
       <div className="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <div className="flex flex-row items-center justify-between p-3 md:p-1">
-          <h1 className="flex text-3xl font-medium mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Url Shortener</h1>
+          <h1 className="flex text-3xl font-medium mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Url Shortener</h1>
           <button
             className="text-white pb-4 cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none content-end ml-auto"
             type="button"
@@ -53,7 +53,7 @@ function Header() {
             </LinkScroll>
           </div>
           <a
-            href="https://instagram.com/onlygrowthfans"
+            href="https://instagram.com/"
             rel="noopener noreferrer"
             target="_blank"
             className="invisible md:visible"
