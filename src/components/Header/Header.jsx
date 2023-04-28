@@ -57,11 +57,23 @@ function Header() {
           <div className="relative">
             <button
               onClick={() => setProfileOpen(!profileOpen)}
-              className="h-10 w-10 rounded-full bg-black"
-            ></button>
+              className="h-10 w-10 rounded-full bg-white items-center justify-center border-2 border-green-400"
+            >
+              <p className="font-bold">P</p>
+            </button>
             {profileOpen && (
-              <div className="bg-black absolute h-20 w-20 rounded-lg">
-                
+              <div className="bg-white cursor-default mt-2 text-black font-semibold flex border-green-400 border-2 items-start flex-col justy-between absolute h-20 w-28 rounded-lg">
+                <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
+                  Account
+                </p>
+                <div className="w-full h-[1px] bg-green-400" />
+                <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
+                  Logout
+                </p>
+                <div className="w-full h-[1px] bg-green-400" />
+                <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
+                  Urls
+                </p>
               </div>
             )}
           </div>
