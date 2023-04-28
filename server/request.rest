@@ -22,11 +22,16 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:3000/api/v1/urls/HzoYB
+GET  http://localhost:3000/api/v1/urls
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2tub3dsZWRnZWQiOnRydWUsImluc2VydGVkSWQiOiI2NDRhZGFmZTNmYmI5YzliZGE1ZTVjYjkiLCJpYXQiOjE2ODI2MjczMjZ9.Q9yw-267R-f43EM-RhZr2xse41tYx-p3RcJxWohRVEw 
+Content-Type: application/json
+
+{
+    "url": "HzoYB"
+}
 
 
 ###
 
-GET  http://localhost:3000/api/v1/urls/
+GET  http://localhost:3000/api/v1/urls/all
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2tub3dsZWRnZWQiOnRydWUsImluc2VydGVkSWQiOiI2NDRhZGFmZTNmYmI5YzliZGE1ZTVjYjkiLCJpYXQiOjE2ODI2MjczMjZ9.Q9yw-267R-f43EM-RhZr2xse41tYx-p3RcJxWohRVEw 

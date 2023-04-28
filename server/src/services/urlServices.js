@@ -26,7 +26,6 @@ const insertUrl = async (url) => {
 };
 
 const getAllUrls = async (user) => {
-  console.log(user);
   try {
     const allUrls = await Url.getAllUrls(user);
     return allUrls;

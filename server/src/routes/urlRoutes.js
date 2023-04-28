@@ -9,8 +9,8 @@ const authenticateUser = require("../middlewares/authenticatedEndpoint");
 const router = express.Router();
 
 router
-  .get("/:url", authenticateUser, getOneUrl)
+  .get("/", authenticateUser, getOneUrl)
   .post("/", authenticateUser, createUrl)
-  .get("/", authenticateUser, getAllUrls);
+  .get("/all", authenticateUser, getAllUrls);
 
 module.exports = router;

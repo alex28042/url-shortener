@@ -2,12 +2,12 @@ const client = require("../mongodb");
 
 const getOneUrl = async (url) => {
   try {
-    console.log(url);
     const urlDatabase = await client
       .db("Url")
       .collection("urls")
       .findOne({ urlShortened: url.url, userId: url.insertedId });
 
+    
     if (!urlDatabase) throw { status: 400, message: "Cant find Url" };
 
     return urlDatabase;

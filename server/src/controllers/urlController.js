@@ -1,15 +1,20 @@
 const UrlServices = require("../services/urlServices");
 
 const getOneUrl = async (req, res) => {
-  const url = { url: req.params.url, ...req.user };
+  const url = { url: req.body.url, ...req.user };
   try {
+    if (!url.url || url.url.length !== 5) {
+      res.status(400).send({
+        status: "FAILED",
+        data: { error: "Invalid short url" },
+      });
+    }
     const oneUrl = await UrlServices.getOneUrl(url);
     res.send({ status: "OK", data: oneUrl });
   } catch (error) {
     res.status(error?.status || 500).send({ status: "FAILED", data: error });
   }
 };
-
 
 const createUrl = async (req, res) => {
   const url = { url: req.body.url, ...req.user };
@@ -43,7 +48,7 @@ const createUrl = async (req, res) => {
 const getAllUrls = async (req, res) => {
   const user = { ...req.user };
   try {
-    const allUrls = await UrlServices.getOneUrl(user);
+    const allUrls = await UrlServices.getAllUrls(user);
     res.send({ status: "OK", data: allUrls });
   } catch (error) {
     res.status(error?.status || 500).send({ status: "FAILED", data: error });
