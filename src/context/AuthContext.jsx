@@ -1,23 +1,30 @@
 import Layout from "@/components/Layout/Layout";
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { cookies, cookies } from "next/headers";
 import { useRouter } from "next/router";
 
-function AuthContext({ children }) {
-  const cookiesStore = cookies();
+function AuthContext({ children, setUser }) {
   const router = useRouter();
-  const [isAuthenticated, setisAuthenticated] = useState(false);
-
+  const [auth, setAuth] = useState(false);
   useLayoutEffect(() => {
+    /*
     if (!cookiesStore.get("auth")) {
       router.push("/");
       return;
     }
 
-    setisAuthenticated(true);
+    setUser(cookiesStore.get("auth"));*/
+
+    if (auth) {
+      router.push("/");
+      return;
+    }
+
+    setUser(
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2tub3dsZWRnZWQiOnRydWUsImluc2VydGVkSWQiOiI2NDRhZGFmZTNmYmI5YzliZGE1ZTVjYjkiLCJpYXQiOjE2ODI2MjczMjZ9.Q9yw-267R-f43EM-RhZr2xse41tYx-p3RcJxWohRVEw"
+    );
   }, []);
 
-  return <Layout>{isAuthenticated && <>{children}</>}</Layout>;
+  return <>{children}</>;
 }
 
 export default AuthContext;

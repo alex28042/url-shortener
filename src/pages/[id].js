@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import AuthContext from "@/context/AuthContext";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -38,7 +39,7 @@ function UrlGetter() {
     fetchUrl();
   }, [id]);
 
-  return <div></div>;
+  return <AuthContext></AuthContext>;
 }
 
 export default UrlGetter;
