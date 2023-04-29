@@ -9,7 +9,7 @@ const authenticateUser = require("../middlewares/authenticatedEndpoint");
 const router = express.Router();
 
 router
-  .get("/", authenticateUser, getOneUrl)
+  .get("/url/:url", authenticateUser, getOneUrl)
   .post("/", authenticateUser, createUrl)
   .get("/all", authenticateUser, getAllUrls);
 

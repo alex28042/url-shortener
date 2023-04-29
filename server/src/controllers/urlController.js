@@ -1,7 +1,9 @@
 const UrlServices = require("../services/urlServices");
 
 const getOneUrl = async (req, res) => {
-  const url = { url: req.body.url, ...req.user };
+  const url = { url: req.params.url, ...req.user };
+
+  console.log(url);
   try {
     if (!url.url || url.url.length !== 5) {
       res.status(400).send({
