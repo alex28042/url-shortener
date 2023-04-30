@@ -1,11 +1,12 @@
 import Layout from "@/components/Layout/Layout";
 import AuthContext from "@/context/AuthContext";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function UrlGetter() {
   const router = useRouter();
   const { id } = router.query;
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     if (!id) return;
@@ -23,7 +24,7 @@ function UrlGetter() {
           method: "GET",
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2tub3dsZWRnZWQiOnRydWUsImluc2VydGVkSWQiOiI2NDRhZGFmZTNmYmI5YzliZGE1ZTVjYjkiLCJpYXQiOjE2ODI2MjczMjZ9.Q9yw-267R-f43EM-RhZr2xse41tYx-p3RcJxWohRVEw",
+              `Bearer ${user}`,
           },
         });
 
@@ -39,7 +40,7 @@ function UrlGetter() {
     fetchUrl();
   }, [id]);
 
-  return <AuthContext></AuthContext>;
+  return <AuthContext setUser={setUser}></AuthContext>;
 }
 
 export default UrlGetter;

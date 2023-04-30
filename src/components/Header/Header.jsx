@@ -1,6 +1,5 @@
+import Link from "next/link";
 import React, { useState } from "react";
-import { Link } from "next/link";
-import { Link as LinkScroll } from "react-scroll";
 
 function Header() {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -42,18 +41,7 @@ function Header() {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <div className="md:ml-auto md:mr-auto font-4 pt-1 md:pl-14 pl-1 flex flex-wrap items-center md:text-base text-1xl md:justify-center justify-items-start">
-            <LinkScroll to="A" smooth={true} duration={1000}>
-              <a className="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
-                Services
-              </a>
-            </LinkScroll>
-            <LinkScroll to="B" smooth={true} duration={1000}>
-              <a className="mr-5  cursor-pointer text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
-                FAQ
-              </a>
-            </LinkScroll>
-          </div>
+          <div className="md:ml-auto md:mr-auto font-4 pt-1 md:pl-14 pl-1 flex flex-wrap items-center md:text-base text-1xl md:justify-center justify-items-start"></div>
           <div className="relative">
             <button
               onClick={() => setProfileOpen(!profileOpen)}
@@ -62,18 +50,12 @@ function Header() {
               <p className="font-bold">P</p>
             </button>
             {profileOpen && (
-              <div className="bg-white cursor-default mt-2 text-black font-semibold flex border-green-400 border-2 items-start flex-col justy-between absolute h-20 w-28 rounded-lg">
-                <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
-                  Account
-                </p>
-                <div className="w-full h-[1px] bg-green-400" />
-                <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
-                  Logout
-                </p>
-                <div className="w-full h-[1px] bg-green-400" />
-                <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
-                  Urls
-                </p>
+              <div className="bg-white cursor-default mt-2 text-black font-semibold flex border-green-400 border-2 items-start flex-col justy-between absolute h-10 justify-center w-28 rounded-lg">
+                <Link href={"/Profile"}>
+                  <p className="ml-1  text-gray-400 transition duration-500 ease-in-out hover:text-black font-semibold tr04">
+                    Urls
+                  </p>
+                </Link>
               </div>
             )}
           </div>
